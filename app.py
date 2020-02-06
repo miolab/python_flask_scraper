@@ -27,15 +27,27 @@ def result():
         word_in_url = re.sub(r"\s+", "+", input_text)
     else:
         word_in_url = input_text
-    url = "https://qiita.com/search?q=" + word_in_url + "&sort=created"
+
+    # // "関連順"
+    url = "https://qiita.com/search?q=" + word_in_url + "&sort=rel"
+    # // "新着順"
+    # url = "https://qiita.com/search?q=" + word_in_url + "&sort=created"
+    print(url)
 
     html_req = requests.get(url)
     html_contents = html_req.content
+
+
+    # // Set Parser
     soup = bs(html_contents, 'html.parser')
 
+    # // Tag Information
+    # <h1 class="searchResult_itemTitle"><a href="/garakutayama/items/0768bc6135ec0683df67">【<em>AWS</em>勉強】<em>AWS</em> SDK　概要</a></h1>
 
-    # title_list = soup.find_all(class_='tst-ArticleBody_title')
+    css_titles_h1_class = "searchResult_itemTitle"
+    title_list = soup.find_all("h1", class_=css_titles_h1_class)
 
+    print(title_list[0].text)
 
 
     # return render_template('index.html', title_list)
