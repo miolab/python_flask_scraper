@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+        <p>チェックしたい技術キーワードを入力してください。</p>
+        <form method="post" action="/">
+            <p>
+                <input class="input_text" type="text" name="input_text" placeholder="ここに入力してください" required>
+            </p>
+            <p>
+                <input class="input_submit" type="submit" name="submit" value="送信">
+            </p>
+        </form>
+{% endblock %}
