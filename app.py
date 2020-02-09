@@ -58,7 +58,7 @@ def result():
             self.tag = tag
             self.css_class = css_class
 
-        def fn_test(self):
+        def fn_prepare_title_list(self):
             html_req = requests.get(self.url)
             html_contents = html_req.content
             soup = bs(html_contents, 'html.parser')
@@ -71,22 +71,13 @@ def result():
         url = "https://qiita.com/search?q=" + word_in_url + "&sort=rel",
         tag = "h1",
         css_class = "searchResult_itemTitle",
-        # title_list = []
     )
-    url_qiita.fn_test()
-
-
-    # print(url_qiita.url)
-    pprint.pprint(url_qiita.title_list)
-
-
     # // Stack Over Flow
     url_sof = Url(
         url = "https://stackoverflow.com/search?q=" + word_in_url,
         tag = "div",
         css_class = "result-link"
     )
-
     # // Developers.IO
     url_dev = Url(
         url = "https://dev.classmethod.jp/?s=" + word_in_url,
@@ -95,12 +86,34 @@ def result():
     )
 
 
+    url_qiita.fn_prepare_title_list()
+    url_sof.fn_prepare_title_list()
+    url_dev.fn_prepare_title_list()
+
+
+    # pprint.pprint(url_qiita.title_list[0].text)
+    # pprint.pprint(url_sof.title_list[0].text)
+    # pprint.pprint(url_dev.title_list[0].text)
+
+
+    array_qiita = url_qiita.title_list
+    print(len(array_qiita))
+    print(len(url_qiita.title_list))
+
+
 
 
     # // ON GOING //
 
-    # for i in range(title_list):
-    #     time.sleep(0.1)
+    # def fn(param):
+    #     for i in range(param):
+    #         time.sleep(0.1)
+    #         pprint.pprint(param[i].text)
+
+
+    # fn(array_qiita)
+    # # fn(url_sof.title_list)
+    # # fn(url_dev.title_list)
 
 
 
