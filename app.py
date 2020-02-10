@@ -1,4 +1,12 @@
-""" Tag Information
+""" Doc
+
+Status: On Going (alpha)
+Version: 0.0
+
+---
+# DEv memo
+
+Tag Information
 - Qiita
     <h1 class="searchResult_itemTitle">
         <a href="/garakutayama/items/0768bc6135ec0683df67">article_title</a>
@@ -96,24 +104,31 @@ def result():
     # pprint.pprint(url_dev.title_list[0].text)
 
 
-    array_qiita = url_qiita.title_list
-    print(len(array_qiita))
-    print(len(url_qiita.title_list))
+    def fn_replace_tag(new_array, bs4_array, tag_hd_pre, tag_hd_post, tag_tl_pre, tag_tl_post):
+        for i in range(len(bs4_array)):
+            _ = re.sub(tag_hd_pre, tag_hd_post, str(bs4_array[i]))
+            _ = re.sub(tag_tl_pre, tag_tl_post, _)
+            new_array.append(_)
+        return new_array
+
+
+    array_qiita = []
+    fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p")
+    # print(array_qiita)
+
+    array_sof = []
+    fn_replace_tag(array_sof, url_sof.title_list, r"<h\d", "<p", r"</h\d", "</p")
+
+    array_dev = []
+    fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "")
+    # print(array_dev)
+
 
 
 
 
     # // ON GOING //
 
-    # def fn(param):
-    #     for i in range(param):
-    #         time.sleep(0.1)
-    #         pprint.pprint(param[i].text)
-
-
-    # fn(array_qiita)
-    # # fn(url_sof.title_list)
-    # # fn(url_dev.title_list)
 
 
 
