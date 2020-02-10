@@ -19,6 +19,7 @@
 しらべたい技術トピックについて、複数のナレッジコミュニティサイトで横断的に記事検索し  
 キーワード検索結果を集約し一覧化するWebアプリです。
 
+![tool_image](https://user-images.githubusercontent.com/33124627/74113093-5a221b00-4be5-11ea-968b-d18fc9ed08bb.png)
 
 ### 🔎 使い方
 
