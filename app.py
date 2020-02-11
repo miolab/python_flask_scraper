@@ -26,10 +26,11 @@ Tag Information
     </p>
 """
 
-import sys
+# import sys
 import os
 import re
 import time
+import concurrent.futures as cf
 # from threading import Timer
 
 from flask import Flask, render_template, request, session
@@ -57,6 +58,7 @@ def index():
 
 @app.route('/', methods=['POST','GET'])
 def result():
+    time.sleep(0.1)
     input_text = request.form["input_text"]
     input_text.strip()
 
@@ -124,26 +126,20 @@ def result():
 
 
     array_qiita = []
-    fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_qiita)
-
     array_sof = []
-    fn_replace_tag(array_sof, url_sof.title_list, "<a", "<p><a", r"</a>", "</a></p>", url_origin_sof)
-    pprint.pprint(array_sof)
-
     array_dev = []
-    fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "", "")
 
 
+    worker_cores = os.cpu_count()
+
+    with cf.ThreadPoolExecutor(max_workers=worker_cores) as executor:
+        """ Parallel task execution
+        """
+        executor.submit(fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_qiita))
+        executor.submit(fn_replace_tag(array_sof, url_sof.title_list, "<a", "<p><a", r"</a>", "</a></p>", url_origin_sof))
+        executor.submit(fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "", ""))
 
 
-
-    # // ON GOING //
-
-
-
-
-
-    # return render_template('index.html', title_list)
     return render_template('result.html',
         array_qiita=array_qiita,
         array_sof=array_sof,
