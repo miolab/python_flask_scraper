@@ -29,6 +29,7 @@ body::before{
     height: 96vh;
 }
 
+
 /* input & submit */
 input{
     border-radius: 10px;
@@ -54,11 +55,15 @@ input{
     background-image: linear-gradient(45deg, #efc10e 0%, #f86a25 100%);
 }
 
+
 /* table */
 div.divTable{
 /* table { */
     display: inline-block;
     text-align: left;
+}
+table{
+    margin-bottom: 15px;
 }
 caption{
     text-align: left;
@@ -70,6 +75,7 @@ td p{
     font-size: 0.8em;
     font-weight: bold;
 }
+
 
 /* others */
 p#topDescription{
