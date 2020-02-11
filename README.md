@@ -1,9 +1,9 @@
-# Python: Flask開発用テンプレート
+# Python (Flask) & Vue.js 開発用テンプレート
 
 ### 💻 下記実装コードのチートシート。（兼、後述アプリ開発）
-- FlaskによるMVC開発
+- Flask & Vue.js によるMVC開発
 - スクレイピング
-- ほかPythonの機能いろいろ
+- ほかPython, Vue.jsの機能いろいろ
 
 ### 💻 開発環境
 - pipenv
