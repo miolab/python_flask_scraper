@@ -1,31 +1,42 @@
 @charset "utf-8";
 /* CSS Document */
 
+
+/* body & container */
 body{
     font-family: "YuGothic","Yu Gothic","Meiryo","ヒラギノ角ゴ","sans-serif";
+    text-align: left;
+    font-size: 1.2em;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    height: 96vh;
+}
+body::before,
+body::after{
+    content: '';
+    display: block;
+    height: 2vh;
+    width: 100vw;
     background: #a8ff78;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    text-align: center;
-    font-size: 1.2em;
-    color: #333333;
-    padding: 0;
 }
 #container {
-    background: rgba(255,255,255,0.2);
     display: flex;
     flex-flow: column;
-    margin: 0 5px 0;
-    height: 100%;
-    text-align: center;
+    margin: auto 30px;
+    padding: auto 30px;
+    height: 96vh;
 }
 
+/* input */
 input{
-    height: 40px;
     border-radius: 10px;
 }
 .input_text{
     width: 340px;
+    height: 40px;
     padding-left: 10px;
     font-size: 1.1em;
 }
@@ -35,16 +46,13 @@ input{
     font-size: 0.9em;
 }
 
-.returnButton {
-    margin-left: 30px;
-}
-
-div.divTable {
+/* table */
+div.divTable{
 /* table { */
     display: inline-block;
     text-align: left;
 }
-caption {
+caption{
     text-align: left;
     margin: 0 30px 5px;
     font-weight: bold;
@@ -52,4 +60,9 @@ caption {
 td p{
     margin: 0 50px 5px;
     font-size: 0.8em;
+}
+
+/* others */
+p#topDescription{
+    margin-top: 0;
 }
