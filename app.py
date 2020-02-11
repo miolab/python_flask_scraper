@@ -41,6 +41,11 @@ import pprint
 import pytest
 
 
+url_origin_qiita = "https://qiita.com/"
+url_origin_sof = "https://stackoverflow.com/"
+url_origin_dev = "https://dev.classmethod.jp/"
+
+
 app = Flask(__name__)
 app.secret_key = b"lkjcgfhjklkjhgjklkjhgjkljhuilkjfd"
 
@@ -76,19 +81,22 @@ def result():
 
     # // Qiita
     url_qiita = Url(
-        url = "https://qiita.com/search?q=" + word_in_url + "&sort=rel",
+        # url = "https://qiita.com/search?q=" + word_in_url + "&sort=rel",
+        url = url_origin_qiita + "search?q=" + word_in_url + "&sort=rel",
         tag = "h1",
         css_class = "searchResult_itemTitle",
     )
     # // Stack Over Flow
     url_sof = Url(
-        url = "https://stackoverflow.com/search?q=" + word_in_url,
+        # url = "https://stackoverflow.com/search?q=" + word_in_url,
+        url = url_origin_sof + "search?q=" + word_in_url,
         tag = "div",
         css_class = "result-link"
     )
     # // Developers.IO
     url_dev = Url(
-        url = "https://dev.classmethod.jp/?s=" + word_in_url,
+        # url = "https://dev.classmethod.jp/?s=" + word_in_url,
+        url = url_origin_dev + "?s=" + word_in_url,
         tag = "p",
         css_class = "title"
     )
@@ -98,30 +106,36 @@ def result():
     url_sof.fn_prepare_title_list()
     url_dev.fn_prepare_title_list()
 
-
+    # // test // ok
     # pprint.pprint(url_qiita.title_list[0].text)
     # pprint.pprint(url_sof.title_list[0].text)
     # pprint.pprint(url_dev.title_list[0].text)
 
 
-    def fn_replace_tag(new_array, bs4_array, tag_hd_pre, tag_hd_post, tag_tl_pre, tag_tl_post):
+    def fn_replace_tag(new_array, bs4_array, tag_hd_pre, tag_hd_post, tag_tl_pre, tag_tl_post, a_prefix):
         for i in range(len(bs4_array)):
             _ = re.sub(tag_hd_pre, tag_hd_post, str(bs4_array[i]))
             _ = re.sub(tag_tl_pre, tag_tl_post, _)
+
+            if a_prefix is "":
+                pass
+            else:
+                _ = re.sub('a href="', 'a href="'+a_prefix, _)
+
             new_array.append(_)
         return new_array
 
 
     array_qiita = []
-    fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p")
-    # print(array_qiita)
+    fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_qiita)
+    print(array_qiita)
 
     array_sof = []
-    fn_replace_tag(array_sof, url_sof.title_list, r"<h\d", "<p", r"</h\d", "</p")
+    fn_replace_tag(array_sof, url_sof.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_sof)
 
     array_dev = []
-    fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "")
-    # print(array_dev)
+    fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "", "")
+    print(array_dev)
 
 
 
@@ -134,7 +148,11 @@ def result():
 
 
     # return render_template('index.html', title_list)
-    return render_template('result.html')
+    return render_template('result.html',
+        array_qiita=array_qiita,
+        array_sof=array_sof,
+        array_dev=array_dev,
+    )
 
 
 @app.route('/result', methods=['POST'])
