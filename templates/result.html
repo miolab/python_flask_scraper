@@ -5,7 +5,11 @@
 {% endblock %}
 
 {% block content %}
-        <div id="table">
+        <div id="app" class="divTable">
+            {% raw %}
+            <p>{{msg_test}}</p>
+            {% endraw %}
+
             <table>
                 <caption>Qiita</caption>
                 {% for s in array_qiita %}
@@ -24,10 +28,22 @@
                     <tr><td>{{ s | safe }}</td></tr>
                 {% endfor %}
             </table>
+
+            <p>
+                <form method="post" action="/result">
+                    <input type="submit" name="submit" value="戻る" class="input_submit">
+                </form>
+            </p>
         </div>
-        <p>
-            <form method="post" action="/result">
-                <input type="submit" name="submit" value="戻る" class="input_submit">
-            </form>
-        </p>
+
+        <!-- Vue.js Script -->
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    msg_test: 'test Vue in Flask'
+                }
+            });
+        </script>
+
 {% endblock %}
