@@ -5,9 +5,26 @@
 {% endblock %}
 
 {% block content %}
-        <p>
-
-        </p>
+        <div id="table">
+            <table>
+                <caption>Qiita</caption>
+                {% for s in array_qiita %}
+                    <tr><td>{{ s | safe }}</td></tr>
+                {% endfor %}
+            </table>
+            <table>
+                <caption>Stack Over Flow</caption>
+                {% for s in array_sof %}
+                    <tr><td>{{ s | safe }}</td></tr>
+                {% endfor %}
+            </table>
+            <table>
+                <caption>Developers.IO</caption>
+                {% for s in array_dev %}
+                    <tr><td>{{ s | safe }}</td></tr>
+                {% endfor %}
+            </table>
+        </div>
         <p>
             <form method="post" action="/result">
                 <input type="submit" name="submit" value="戻る" class="input_submit">
