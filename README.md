@@ -22,6 +22,9 @@
 
 ![page-top](https://user-images.githubusercontent.com/33124627/74283399-240ba500-4d65-11ea-83eb-bf79a537fb83.png)
 
+![page-result](https://user-images.githubusercontent.com/33124627/74283240-e7d84480-4d64-11ea-82a3-288eab1e26db.png)
+
+---
 
 ### 🔎 使い方
 
@@ -29,13 +32,11 @@
   http://localhost:5000
 1. 検索窓に、しらべたいキーワードを1個もしくは2個以上タイプし、  
   検索ボタンをクリック。
-
-![page-result](https://user-images.githubusercontent.com/33124627/74283240-e7d84480-4d64-11ea-82a3-288eab1e26db.png)
-
   - 現バージョンでは、下記サイトをデフォルトサイトとして検索結果記事を集約・一覧表示します
     - [Qiita](https://qiita.com/)
     - [Stack Over Flow](https://stackoverflow.com/)
     - [Developes.IO](https://dev.classmethod.jp/)
+
 
 ### 🔎 アプリ制作の背景
 
@@ -54,8 +55,8 @@
   →　自分の志向に合わないサイトは前もって除外しておきたい。
 
 
-__※ 冒頭説明の通り、本アプリは「Flask開発チートシート」の役割色がつよく、ソースコード中  
-実装手順の手引き・説明的にコードを書いていたり、コメントを残している箇所があったりします。__
+__※ 冒頭説明の通り、本アプリは<font color="red">「Flask開発チートシート」</font>としての側面がつよく、ソースコード中  
+実装手順の説明的なコードを書いていたり、コメントを残している箇所があったりします。__
 
 
 ### 🔎 今後の機能追加予定
