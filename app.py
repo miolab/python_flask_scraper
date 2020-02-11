@@ -81,21 +81,18 @@ def result():
 
     # // Qiita
     url_qiita = Url(
-        # url = "https://qiita.com/search?q=" + word_in_url + "&sort=rel",
         url = url_origin_qiita + "search?q=" + word_in_url + "&sort=rel",
         tag = "h1",
         css_class = "searchResult_itemTitle",
     )
     # // Stack Over Flow
     url_sof = Url(
-        # url = "https://stackoverflow.com/search?q=" + word_in_url,
         url = url_origin_sof + "search?q=" + word_in_url,
-        tag = "div",
-        css_class = "result-link"
+        tag = "a",
+        css_class = "question-hyperlink"
     )
     # // Developers.IO
     url_dev = Url(
-        # url = "https://dev.classmethod.jp/?s=" + word_in_url,
         url = url_origin_dev + "?s=" + word_in_url,
         tag = "p",
         css_class = "title"
@@ -117,7 +114,7 @@ def result():
             _ = re.sub(tag_hd_pre, tag_hd_post, str(bs4_array[i]))
             _ = re.sub(tag_tl_pre, tag_tl_post, _)
 
-            if a_prefix is "":
+            if a_prefix == "":
                 pass
             else:
                 _ = re.sub('a href="', 'a href="'+a_prefix, _)
@@ -128,14 +125,13 @@ def result():
 
     array_qiita = []
     fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_qiita)
-    print(array_qiita)
 
     array_sof = []
-    fn_replace_tag(array_sof, url_sof.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_sof)
+    fn_replace_tag(array_sof, url_sof.title_list, "<a", "<p><a", r"</a>", "</a></p>", url_origin_sof)
+    pprint.pprint(array_sof)
 
     array_dev = []
     fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "", "")
-    print(array_dev)
 
 
 
