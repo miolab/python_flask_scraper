@@ -34,7 +34,8 @@ input{
     font-size: 0.9em;
 }
 
-div #table {
+div.divTable {
+/* table { */
     display: inline-block;
     text-align: left;
 }
