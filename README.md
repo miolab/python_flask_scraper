@@ -9,6 +9,7 @@
 - pipenv
 - Python 3.8
 - Flask 1.1.1
+- Vue.js 2.6.11
 - VSCode
 
 
