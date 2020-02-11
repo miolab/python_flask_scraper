@@ -101,11 +101,21 @@ def result():
     )
 
 
-    url_qiita.fn_prepare_title_list()
-    url_sof.fn_prepare_title_list()
-    url_dev.fn_prepare_title_list()
+    worker_cores = os.cpu_count()
 
-    # // test // ok
+    with cf.ThreadPoolExecutor(max_workers=worker_cores) as executor:
+        """ Parallel task execution
+        """
+        executor.submit(url_qiita.fn_prepare_title_list())
+        executor.submit(url_sof.fn_prepare_title_list())
+        executor.submit(url_dev.fn_prepare_title_list())
+
+    # // Sequential processing instead of Parallel task processing //
+    # url_qiita.fn_prepare_title_list()
+    # url_sof.fn_prepare_title_list()
+    # url_dev.fn_prepare_title_list()
+
+
     # pprint.pprint(url_qiita.title_list[0].text)
     # pprint.pprint(url_sof.title_list[0].text)
     # pprint.pprint(url_dev.title_list[0].text)
@@ -129,12 +139,7 @@ def result():
     array_sof = []
     array_dev = []
 
-
-    worker_cores = os.cpu_count()
-
     with cf.ThreadPoolExecutor(max_workers=worker_cores) as executor:
-        """ Parallel task execution
-        """
         executor.submit(fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_qiita))
         executor.submit(fn_replace_tag(array_sof, url_sof.title_list, "<a", "<p><a", r"</a>", "</a></p>", url_origin_sof))
         executor.submit(fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "", ""))
