@@ -1,31 +1,9 @@
 """ Doc
 
-Status: On Going (alpha)
+Status : On Going (alpha)
 Version: 0.0
 
----
-# DEv memo
-
-Tag Information
-- Qiita
-    <h1 class="searchResult_itemTitle">
-        <a href="/garakutayama/items/0768bc6135ec0683df67">article_title</a>
-    </h1>
-
-- Stack Over Flow
-    <div class="result-link">
-        <h3>
-            <a href="/questions/53660779/including-node-package-into-python-aws-lambda?r=SearchResults" data-searchsession="/questions/53660779/including-node-package-into-python-aws-lambda?r=SearchResults&amp;s=15|109.3204" title="Including node package into Python AWS Lambda" class="question-hyperlink">
-            Q: Including node package into Python AWS Lambda        </a>
-        </h3>
-    </div>
-
-- Developers.IO
-    <p class="title">
-        <a href="https://dev.classmethod.jp/etc/ec2-image-builder-codepipeline/">設定ファイルPushでゴールデンイメージを自動作成する構成を考えてみた</a>
-    </p>
 """
-
 # import sys
 import os
 import re
@@ -166,3 +144,36 @@ if __name__ == '__main__':
     # Timer(2, fn_webdriver)
     app.debug = True
     app.run(host='localhost', port=5000)
+
+
+
+
+""" DEv memo
+
+# todo
+
+- 検索結果数をフロント側で可変する（resultのヘッド部分で）
+
+
+---
+
+# Tag Information
+
+- Qiita
+    <h1 class="searchResult_itemTitle">
+        <a href="/garakutayama/items/0768bc6135ec0683df67">article_title</a>
+    </h1>
+
+- Stack Over Flow
+    <div class="result-link">
+        <h3>
+            <a href="/questions/53660779/including-node-package-into-python-aws-lambda?r=SearchResults" data-searchsession="/questions/53660779/including-node-package-into-python-aws-lambda?r=SearchResults&amp;s=15|109.3204" title="Including node package into Python AWS Lambda" class="question-hyperlink">
+            Q: Including node package into Python AWS Lambda        </a>
+        </h3>
+    </div>
+
+- Developers.IO
+    <p class="title">
+        <a href="https://dev.classmethod.jp/etc/ec2-image-builder-codepipeline/">設定ファイルPushでゴールデンイメージを自動作成する構成を考えてみた</a>
+    </p>
+"""
