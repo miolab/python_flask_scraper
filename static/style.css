@@ -40,9 +40,10 @@ div #table {
 }
 caption {
     text-align: left;
-    margin: 0 15px 5px;
+    margin: 0 30px 5px;
     font-weight: bold;
 }
-td p {
-    margin: 0 30px 5px;
+td p{
+    margin: 0 50px 5px;
+    font-size: 0.8em;
 }
