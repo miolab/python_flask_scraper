@@ -31,7 +31,12 @@ input{
 }
 .input_submit{
     width: 100px;
+    height: 35px;
     font-size: 0.9em;
+}
+
+.returnButton {
+    margin-left: 30px;
 }
 
 div.divTable {
