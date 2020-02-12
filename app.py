@@ -119,7 +119,7 @@ def result():
 
     with cf.ThreadPoolExecutor(max_workers=worker_cores) as executor:
         executor.submit(fn_replace_tag(array_qiita, url_qiita.title_list, r"<h\d", "<p", r"</h\d", "</p", url_origin_qiita))
-        executor.submit(fn_replace_tag(array_sof, url_sof.title_list, "<a", "<p><a", r"</a>", "</a></p>", url_origin_sof))
+        executor.submit(fn_replace_tag(array_sof, url_sof.title_list, "<a", "<p><a", "</a>", "</a></p>", url_origin_sof))
         executor.submit(fn_replace_tag(array_dev, url_dev.title_list, "\n", "", "", "", ""))
 
 
