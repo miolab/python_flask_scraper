@@ -10,7 +10,7 @@
             <p>{{msg_test}}</p>
             {% endraw %} -->
 
-            <p v-html="return_button" class="returnButton"></p>
+            <p v-html="returnButton" class="returnButton"></p>
 
             <p class="siteName">Qiita</p>
             <table>
@@ -29,14 +29,14 @@
             <p class="siteName">Stack Over Flow</p>
             <button @click="click" class="buttonShowSwitch">表示/非表示</button>
             <transition>
-                <table v-show="show">
+                <table v-show="isShow">
                     {% for s in array_sof %}
                         <tr><td>{{ s | safe }}</td></tr>
                     {% endfor %}
                 </table>
             </transition>
 
-            <p v-html="return_button" class="returnButton" style="margin: 50px auto"></p>
+            <p v-html="returnButton" class="returnButton" style="margin: 50px auto"></p>
 
         </div>
 
@@ -45,16 +45,16 @@
             new Vue({
                 el: '#app',
                 data: {
-                    return_button: `
+                    returnButton: `
                     <form method="post" action="/result">
                         <input type="submit" name="submit" value="戻る" class="input_submit">
                     </form>
                     `,
-                    show: false
+                    isShow: false
                 },
                 methods: {
                     click: function() {
-                        this.show = !this.show
+                        this.isShow = !this.isShow
                     }
                 }
             });
