@@ -11,7 +11,7 @@ import time
 import concurrent.futures as cf
 # from threading import Timer
 
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, redirect, url_for
 import requests
 from bs4 import BeautifulSoup as bs
 # from wtforms import Form, TextAreaField, validators
@@ -131,9 +131,9 @@ def result():
 
 
 @app.route('/result', methods=['POST'])
-def redirect():
+def redirect_home():
     session.clear()
-    return render_template('index.html')
+    return redirect(url_for('index'))
 
 
 # def fn_webdriver():
@@ -149,13 +149,6 @@ if __name__ == '__main__':
 
 
 """ Dev memo
-
-# todo
-
-- 検索結果数をフロント側で可変にする（resultページのヘッド部分で）
-
-
----
 
 # Tag Information
 
