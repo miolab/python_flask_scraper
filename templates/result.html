@@ -12,23 +12,29 @@
 
             <p v-html="return_button" class="returnButton"></p>
 
+            <p class="siteName">Qiita</p>
             <table>
-                <caption>Qiita</caption>
+                <!-- <caption>Qiita</caption> -->
                 {% for s in array_qiita %}
                     <tr><td>{{ s | safe }}</td></tr>
                 {% endfor %}
             </table>
+
+            <p class="siteName">Developers.IO</p>
             <table>
-                <caption>Developers.IO</caption>
+                <!-- <caption>Developers.IO</caption> -->
                 {% for s in array_dev %}
                     <tr><td>{{ s | safe }}</td></tr>
                 {% endfor %}
             </table>
-            <table>
-                <caption>Stack Over Flow</caption>
-                {% for s in array_sof %}
-                    <tr><td>{{ s | safe }}</td></tr>
-                {% endfor %}
+
+            <p class="siteName">Stack Over Flow</p>
+            <button @click="click" class="buttonShowSwitch">表示/非表示</button>
+            <table v-show="show">
+                    <!-- <caption>Stack Over Flow</caption> -->
+                    {% for s in array_sof %}
+                        <tr><td>{{ s | safe }}</td></tr>
+                    {% endfor %}
             </table>
 
             <p v-html="return_button" class="returnButton"></p>
@@ -44,7 +50,13 @@
                     <form method="post" action="/result">
                         <input type="submit" name="submit" value="戻る" class="input_submit">
                     </form>
-                    `
+                    `,
+                    show: true
+                },
+                methods: {
+                    click: function() {
+                        this.show = !this.show
+                    }
                 }
             });
         </script>
